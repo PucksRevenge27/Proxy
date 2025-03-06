@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nebula Proxy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Nebula Proxy</h1>
+            <p>Your gateway to the internet</p>
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder="Enter URL" id="url-input">
+            <button onclick="proxyUrl()">Go</button>
+        </div>
+    </div>
+
+    <script>
+        function proxyUrl() {
+            const url = document.getElementById('url-input').value;
+            if (url) {
+                // Redirect to the proxy server with the entered URL
+                window.location.href = `/proxy?url=${encodeURIComponent(url)}`;
+            }
+        }
+    </script>
+</body>
+</html>
