@@ -22,6 +22,8 @@ app.use('/proxy', (req, res) => {
     return;
   }
 
+  console.log(`Proxying request to: ${target}`);
+
   // Define the SOCKS proxy URL
   const socksProxyUrl = 'socks://127.0.0.1:1080';
 
@@ -35,6 +37,10 @@ app.use('/proxy', (req, res) => {
       res.status(500).send('Proxy error');
       return;
     }
+
+    // Log response status and headers for debugging
+    console.log('Response status:', response.statusCode);
+    console.log('Response headers:', response.headers);
 
     // Inject Eruda script if the response is HTML
     if (response.headers['content-type'] && response.headers['content-type'].includes('text/html')) {
